@@ -325,13 +325,15 @@ export const Keyboard = forwardRef<KeyboardRefs, KeyboardProps>(
     screenTexture.repeat.set(-1, -1);
     screenTexture.offset.set(1, 1);
 
-    const keycapMat = new THREE.MeshStandardMaterial({
+    const defaultKeycapMat = new THREE.MeshStandardMaterial({
       roughness: 0.7,
       map: keycapTexture,
     });
 
+    const keycapMat = props.keycapMaterial || defaultKeycapMat;
+
     const knobMat = new THREE.MeshStandardMaterial({
-      color: "#e24818",
+      color: props.knobColor || "#e24818",
       roughness: 0.4,
       metalness: 1,
       bumpMap: knurlTexture,
