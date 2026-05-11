@@ -2,6 +2,7 @@
 
 import { Bounded } from "@/components/Bounded";
 import FadeIn from "@/components/FadeIn";
+import { checkout } from "@/lib/checkout";
 import { useGSAP } from "@gsap/react";
 import { Content } from "@prismicio/client";
 import {
@@ -71,9 +72,9 @@ const PurchaseButton: FC<PurchaseButtonProps> = ({ slice }) => {
 
   const handlePurchaseClick = async () => {
     setIsPressed(true);
-    //TODO Add checkout redirect
 
-    await new Promise((resolve) => setTimeout(resolve, 500));
+    await checkout();
+
     setIsPressed(false);
   };
 
