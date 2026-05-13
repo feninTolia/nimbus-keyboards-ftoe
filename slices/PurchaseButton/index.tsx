@@ -12,7 +12,7 @@ import {
 } from "@prismicio/react";
 import clsx from "clsx";
 import gsap from "gsap";
-import { CSSProperties, FC, MouseEvent, useRef, useState } from "react";
+import { CSSProperties, FC, useRef, useState } from "react";
 import { LuChevronRight, LuLoader } from "react-icons/lu";
 
 gsap.registerPlugin(useGSAP);

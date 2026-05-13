@@ -3,7 +3,6 @@ import FadeIn from "@/components/FadeIn";
 import { asText, Content } from "@prismicio/client";
 import { PrismicNextImage } from "@prismicio/next";
 import {
-  PrismicImage,
   PrismicRichText,
   PrismicText,
   SliceComponentProps,

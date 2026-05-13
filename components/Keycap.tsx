@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/immutability */
 import { Float, useGLTF, useTexture } from "@react-three/drei";
 import * as THREE from "three";
 import { GLTF } from "three-stdlib";

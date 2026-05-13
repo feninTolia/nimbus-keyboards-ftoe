@@ -17,7 +17,7 @@ import clsx from "clsx";
 gsap.registerPlugin(useGSAP, SplitText, ScrollTrigger);
 
 function LoaderWrapper() {
-  const { loaded, active } = useProgress();
+  const { active } = useProgress();
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
