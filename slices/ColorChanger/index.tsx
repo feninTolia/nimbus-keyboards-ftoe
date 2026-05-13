@@ -9,7 +9,6 @@ import {
 import { Canvas } from "@react-three/fiber";
 import clsx from "clsx";
 import Image from "next/image";
-import { text } from "node:stream/consumers";
 import { FC, useCallback, useState } from "react";
 import Scene from "./Scene";
 
@@ -83,6 +82,7 @@ const ColorChanger: FC<ColorChangerProps> = ({ slice }) => {
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
       className="relative flex h-[90vh] min-h-[1000px] flex-col overflow-hidden bg-linear-to-br from-[#0f172a] to-[#062f4a] text-white"
+      id="keycap-changer"
     >
       {/* SVG background */}
       <svg

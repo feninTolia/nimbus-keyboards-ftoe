@@ -8,10 +8,38 @@ import { Canvas } from "@react-three/fiber";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { SplitText } from "gsap/SplitText";
-import { FC } from "react";
+import { FC, useEffect, useState } from "react";
 import Scene from "./Scene";
+import { Loader } from "@/components/Loader";
+import { useProgress } from "@react-three/drei";
+import clsx from "clsx";
 
 gsap.registerPlugin(useGSAP, SplitText, ScrollTrigger);
+
+function LoaderWrapper() {
+  const { loaded, active } = useProgress();
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    if (active) {
+      setIsLoading(true);
+    } else {
+      const timer = setTimeout(() => setIsLoading(false), 100);
+      return () => clearTimeout(timer);
+    }
+  }, [active]);
+
+  return (
+    <div
+      className={clsx(
+        "motion-safe:transition-opacity motion-safe:duration-700",
+        isLoading ? "opacity-100" : "pointer-events-none opacity-0",
+      )}
+    >
+      <Loader />;
+    </div>
+  );
+}
 
 export type HeroProps = SliceComponentProps<Content.HeroSlice>;
 
@@ -57,6 +85,7 @@ const Hero: FC<HeroProps> = ({ slice }) => {
       gsap.set(".hero-heading, .hero-body", { opacity: 1 });
     });
   });
+
   return (
     <section
       data-slice-type={slice.slice_type}
@@ -68,6 +97,8 @@ const Hero: FC<HeroProps> = ({ slice }) => {
           <Scene />
         </Canvas>
       </div>
+
+      <LoaderWrapper />
 
       <div className="hero-content absolute inset-x-0 top-0 h-dvh">
         <Bounded
