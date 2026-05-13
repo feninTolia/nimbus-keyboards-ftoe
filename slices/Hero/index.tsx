@@ -24,7 +24,7 @@ function LoaderWrapper() {
     if (active) {
       setIsLoading(true);
     } else {
-      const timer = setTimeout(() => setIsLoading(false), 100);
+      const timer = setTimeout(() => setIsLoading(false), 200);
       return () => clearTimeout(timer);
     }
   }, [active]);
